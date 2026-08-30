@@ -1,13 +1,17 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import linkedinPhoto from '../../assets/linkedin.png'
 import { TegakiRenderer } from 'tegaki'
 import yujiSyukuFont from '../../assets/yuji-syuku/bundle.ts'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { useGsapReveal } from '../../hooks/useGsapReveal'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const heroName = 'A B Najeeb Rahman'
 
-function Hero({ variant = 'section', onNavigate, isActive = false, revealKey }) {
+function Hero({ variant = 'section', onNavigate, isActive = true, revealKey }) {
   const heroRef = useRef(null)
   const shouldReduceMotion = usePrefersReducedMotion()
   const isPanel = variant === 'panel'
@@ -34,14 +38,46 @@ function Hero({ variant = 'section', onNavigate, isActive = false, revealKey }) 
     replayKey
   )
 
+  useEffect(() => {
+    if (shouldReduceMotion || !heroRef.current) return undefined
+
+    const ctx = gsap.context(() => {
+      // Multi-depth parallax scrubbing: character portrait moves faster than background
+      gsap.to('.hero-portrait', {
+        yPercent: 18,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      })
+
+      gsap.to('.hero-copy', {
+        yPercent: -10,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      })
+    }, heroRef)
+
+    return () => ctx.revert()
+  }, [shouldReduceMotion])
+
   return (
     <section
       id="home"
       ref={heroRef}
       className={`relative flex items-center overflow-hidden bg-white px-6 ${
-        isPanel ? 'w-screen' : 'min-h-screen pt-20 sm:pt-0'
+        isPanel ? 'h-full w-screen' : 'min-h-screen pt-20 sm:pt-0'
       }`}
     >
+
       <div className="absolute left-[5%] top-[15%] h-[1px] w-32 rotate-12 bg-[var(--paper-line)] opacity-40 mix-blend-multiply" />
       <div className="absolute bottom-[20%] right-[10%] h-1.5 w-1.5 rounded-full bg-gray-400 opacity-15 mix-blend-multiply" />
       <div className="absolute bottom-[10%] left-[40%] h-[1px] w-64 -rotate-6 bg-[var(--paper-line-soft)] opacity-30 mix-blend-multiply" />
@@ -95,7 +131,7 @@ function Hero({ variant = 'section', onNavigate, isActive = false, revealKey }) 
 
           <div className="col-span-12 lg:col-span-4">
             <div
-              className="hero-portrait paper-elevate character-mask character-glow relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2px] border border-gray-200 bg-white p-2 lg:ml-auto"
+              className="hero-portrait paper-elevate character-mask character-glow relative mx-auto aspect-[3/4] w-4/5 max-w-[300px] overflow-hidden rounded-[2px] border border-gray-200 bg-white p-2 lg:ml-auto"
             >
               <div className="relative h-full w-full overflow-hidden bg-white">
                 <img

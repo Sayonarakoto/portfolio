@@ -246,6 +246,51 @@ h4,
   border-color: var(--ink-muted);
 }
 
+/* Horizontal Timeline Styling */
+.morph-timeline-h {
+  position: relative;
+  display: flex;
+  gap: 1.75rem;
+  overflow-x: auto;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+}
+
+.morph-line-h {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--paper-line);
+}
+
+.morph-item-h {
+  position: relative;
+  min-width: 280px;
+  max-width: 320px;
+  flex-shrink: 0;
+}
+
+.morph-dot-h {
+  position: absolute;
+  top: -1.5rem;
+  left: 1.25rem;
+  width: 7px;
+  height: 7px;
+  background: var(--ink-main);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.morph-item-h:hover .morph-content {
+  transform: translateY(-8px);
+  box-shadow: var(--ink-shadow-strong);
+  border-color: var(--ink-muted);
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   .ink-reveal-char {
     opacity: 1 !important;
@@ -277,3 +322,37 @@ h4,
   /* Assuming this is a base style for canvas-like elements */
   isolation: isolate; /* Matches horimiya-canvas behavior */
 }
+
+/* Minimal Editorial Scrollbar */
+[data-lenis-prevent] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26, 26, 27, 0.2) transparent;
+}
+
+[data-lenis-prevent]::-webkit-scrollbar {
+  width: 4px;
+}
+
+[data-lenis-prevent]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[data-lenis-prevent]::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 27, 0.2);
+  border-radius: 2px;
+}
+
+[data-lenis-prevent]::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 26, 27, 0.4);
+}
+
+/* GPU Hardware Compositing Layer Promotion */
+.gpu-layer,
+.parallax-layer,
+.hero-portrait {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+

@@ -3,7 +3,7 @@ import SectionWrapper from '../SectionWrapper';
 import { useGsapReveal } from '../../hooks/useGsapReveal';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 
-function Contact({ variant = 'section', isActive = false, revealKey }) {
+function Contact({ variant = 'section', isActive = true, revealKey }) {
   const revealRef = useRef(null);
   const [status, setStatus] = useState('idle');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });

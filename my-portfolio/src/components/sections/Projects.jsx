@@ -22,7 +22,7 @@ const projects = [
   },
 ]
 
-function Projects({ variant = 'section', onNavigate, isActive = false, revealKey }) {
+function Projects({ variant = 'section', onNavigate, isActive = true, revealKey }) {
   const revealRef = useRef(null)
   const shouldReduceMotion = usePrefersReducedMotion()
   const shouldReveal = isActive
@@ -101,3 +101,5 @@ function Projects({ variant = 'section', onNavigate, isActive = false, revealKey
 }
 
 export default Projects
+
+
