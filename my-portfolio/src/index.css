@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@900&family=Sawarabi+Mincho&family=Shippori+Mincho:wght@400;700;800&family=Yuji+Boku&family=Yuji+Syuku&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -15,8 +15,7 @@
   --paper-card-strong: rgba(255, 255, 255, 0.98);
   --ink-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.03);
   --ink-shadow-strong: 0 12px 32px rgba(0, 0, 0, 0.05);
-  --sumi-ink: #1A1A1B; /* Added for text-sumi-ink */
-  --font-shippori: 'Shippori Mincho', serif; /* Added for font-shippori */
+  --sumi-ink: #1A1A1B;
 }
 
 html {
@@ -31,21 +30,17 @@ body {
   overflow-x: hidden;
 }
 
-.hide-scrollbar {
-  scrollbar-width: none;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-
 h1,
 h2,
 h3,
 h4,
 .font-heading {
-  font-family: 'Shippori Mincho', serif;
+  font-family: 'Alice', serif;
+}
+
+.font-mono-name,
+.hero-name {
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .horimiya-canvas {

@@ -1,15 +1,12 @@
 import { useEffect, useRef } from 'react'
 import linkedinPhoto from '../../assets/linkedin.png'
-import { TegakiRenderer } from 'tegaki'
-import yujiSyukuFont from '../../assets/yuji-syuku/bundle.ts'
+import EditorialTitle from '../EditorialTitle'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { useGsapReveal } from '../../hooks/useGsapReveal'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const heroName = 'A B Najeeb Rahman'
 
 function Hero({ variant = 'section', onNavigate, isActive = true, revealKey }) {
   const heroRef = useRef(null)
@@ -99,12 +96,8 @@ function Hero({ variant = 'section', onNavigate, isActive = true, revealKey }) {
                 </p>
               </div>
 
-              <div className="hero-namewrap ink-container relative z-10 flex select-none bg-transparent">
-                <div className="hero-name text-5xl md:text-7xl">
-                  <TegakiRenderer font={yujiSyukuFont} duration={4000} delay={1000}>
-                    {heroName}
-                  </TegakiRenderer>
-                </div>
+              <div className="hero-namewrap relative z-10 select-none bg-transparent">
+                <EditorialTitle text="A B Najeeb Rahman" />
               </div>
 
               <div className="hero-action flex flex-wrap gap-5">
