@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import linkedinPhoto from '../../assets/linkedin.png'
-import EditorialTitle from '../EditorialTitle'
+import nameAnimation from '../../assets/moss-najeebrahman.mp4'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { useGsapReveal } from '../../hooks/useGsapReveal'
 import gsap from 'gsap'
@@ -75,22 +75,6 @@ function Hero({ variant = 'section', onNavigate, isActive = true, revealKey }) {
       }`}
     >
 
-      <div className="hero-video-layer pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <video
-          className="h-full w-full object-cover opacity-[0.12] mix-blend-multiply grayscale"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster={linkedinPhoto}
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/55" />
-        <div className="absolute inset-0 bg-white/20" />
-      </div>
-
       <div className="absolute left-[5%] top-[15%] h-[1px] w-32 rotate-12 bg-[var(--paper-line)] opacity-40 mix-blend-multiply" />
       <div className="absolute bottom-[20%] right-[10%] h-1.5 w-1.5 rounded-full bg-gray-400 opacity-15 mix-blend-multiply" />
       <div className="absolute bottom-[10%] left-[40%] h-[1px] w-64 -rotate-6 bg-[var(--paper-line-soft)] opacity-30 mix-blend-multiply" />
@@ -113,7 +97,18 @@ function Hero({ variant = 'section', onNavigate, isActive = true, revealKey }) {
               </div>
 
               <div className="hero-namewrap relative z-10 select-none bg-transparent">
-                <EditorialTitle text="A B Najeeb Rahman" />
+                <video
+                  className="hero-name-video w-full max-w-[720px] mix-blend-multiply"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  aria-label="A B Najeeb Rahman animated name"
+                >
+                  <source src={nameAnimation} type="video/mp4" />
+                </video>
+                <span className="sr-only">A B Najeeb Rahman</span>
               </div>
 
               <div className="hero-action flex flex-wrap gap-5">
