@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
+import NeuSection from './ui/NeuSection'
 
 function SectionWrapper({ children, id, className = '', variant = 'section' }) {
   const isPanel = variant === 'panel'
 
   return (
-    <section
+    <NeuSection
       id={id}
       className={`relative flex bg-white ${
         isPanel
@@ -14,7 +15,7 @@ function SectionWrapper({ children, id, className = '', variant = 'section' }) {
     >
       <div aria-hidden className="pointer-events-none absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-gray-200 to-transparent" />
       <div className="relative z-10 mx-auto w-full max-w-6xl">{children}</div>
-    </section>
+    </NeuSection>
   )
 }
 

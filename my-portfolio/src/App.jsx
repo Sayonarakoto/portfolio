@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import CinematicScrollProvider from './components/CinematicScrollProvider'
-import ReishiParticles from './components/ReishiParticles'
 import HorizontalTrack from './components/HorizontalTrack'
 import Navbar from './components/Navbar'
 import Hero from './components/sections/Hero'
@@ -26,11 +25,35 @@ export default function App() {
     return () => media.removeEventListener('change', handleChange)
   }, [])
 
+  const handleNavigate = (href) => {
+    const id = href?.replace(/^#/, '')
+    if (!id) return
+
+    const target = document.getElementById(id)
+    if (!target) return
+
+    if (!isDesktop) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return
+    }
+
+    const track = document.querySelector('[data-horizontal-track] > div')
+    const trigger = document.querySelector('[data-horizontal-track]')
+    if (!track || !trigger) return
+
+    const panels = Array.from(track.children)
+    const panelIndex = panels.findIndex((panel) => panel.contains(target))
+    if (panelIndex < 0 || panels.length <= 1) return
+
+    const horizontalDistance = track.scrollWidth - trigger.clientWidth
+    const targetScroll = trigger.offsetTop + (horizontalDistance * panelIndex) / (panels.length - 1)
+    window.scrollTo({ top: targetScroll, behavior: 'smooth' })
+  }
+
   return (
     <CinematicScrollProvider>
       <div className="horimiya-canvas relative z-0 min-h-screen text-[var(--ink-main)]">
-        <ReishiParticles />
-        <Navbar />
+        <Navbar onNavigate={handleNavigate} />
 
         <main className="relative z-10">
           {isDesktop ? (

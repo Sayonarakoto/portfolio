@@ -3,6 +3,7 @@ import SectionWrapper from '../SectionWrapper'
 import { useGsapReveal } from '../../hooks/useGsapReveal'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import NeuCard from '../ui/NeuCard'
 
 const timelineItems = [
   {
@@ -28,11 +29,11 @@ const timelineItems = [
     description: 'Mentored students in HTML, CSS, and JavaScript through hands-on build sessions.',
   },
   {
-    title: 'INET-INFOTECH Internship (MERN)',
-    period: 'Internship',
-    org: 'MERN Stack Development',
+    title: 'INET-INFOTECH Internship',
+    period: 'MERN Stack Learning',
+    org: 'INET-INFOTECH',
     category: 'Internship',
-    description: 'Built interactive React UI and improved component structure for maintainability.',
+    description: 'Strengthened my JavaScript fundamentals by practising DOM manipulation, events, and functional programming. Learned React components, props, state, and JSX to build interactive interfaces. Then applied these skills to connect frontend pages with backend logic and support full-stack projects such as GEN-C.',
   },
   {
     title: 'AI Automation Workshop',
@@ -99,7 +100,7 @@ function About({ variant = 'section', isActive = true, revealKey }) {
   }, [handleScroll])
 
   return (
-    <SectionWrapper id="about" className="bg-white" variant={variant}>
+    <SectionWrapper id="about" className="about-section bg-white" variant={variant}>
       <div ref={revealRef} className="space-y-6">
         <div className="grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-3">
@@ -122,16 +123,16 @@ function About({ variant = 'section', isActive = true, revealKey }) {
               { cat: 'Tools', list: 'Git, GitHub Projects, Docker' },
               { cat: 'Strengths', list: 'Problem-Solving Under Pressure, UX Detail, Communication, Mental Flexibility' },
             ].map((item) => (
-              <div key={item.cat} className="about-card ink-card rounded-2xl p-4">
+              <NeuCard key={item.cat} className="about-card rounded-2xl p-4">
                 <h4 className="text-[10px] uppercase tracking-[0.2em] text-gray-500">{item.cat}</h4>
                 <p className="mt-1 text-xs leading-relaxed text-gray-600">{item.list}</p>
-              </div>
+              </NeuCard>
             ))}
           </div>
         </div>
 
         {/* Timeline positioned at the bottom of About */}
-        <div className="about-timeline ink-card-strong w-full rounded-[1.5rem] p-5 sm:p-6">
+        <NeuCard className="about-timeline w-full rounded-[1.5rem] p-5 sm:p-6">
           <div className="flex items-center justify-between border-b border-[var(--paper-line)] pb-3">
             <div className="flex items-center gap-3">
               <h3 className="font-heading text-2xl font-semibold text-[var(--ink-main)] sm:text-3xl">
@@ -173,7 +174,7 @@ function About({ variant = 'section', isActive = true, revealKey }) {
             ref={timelineScrollRef}
             onWheel={handleWheel}
             data-lenis-prevent="true"
-            className="morph-timeline-h hide-scrollbar mt-4 cursor-grab active:cursor-grabbing"
+            className="morph-timeline-h mt-4 cursor-grab active:cursor-grabbing"
           >
             <div className="morph-line-h" />
             {timelineItems.map((item, idx) => (
@@ -195,7 +196,7 @@ function About({ variant = 'section', isActive = true, revealKey }) {
               </div>
             ))}
           </div>
-        </div>
+        </NeuCard>
       </div>
     </SectionWrapper>
   )

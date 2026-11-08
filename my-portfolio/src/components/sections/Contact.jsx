@@ -2,6 +2,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import SectionWrapper from '../SectionWrapper';
 import { useGsapReveal } from '../../hooks/useGsapReveal';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
+import NeuButton from '../ui/NeuButton';
+import NeuCard from '../ui/NeuCard';
+import NeuInput from '../ui/NeuInput';
 
 function Contact({ variant = 'section', isActive = true, revealKey }) {
   const revealRef = useRef(null);
@@ -62,8 +65,8 @@ function Contact({ variant = 'section', isActive = true, revealKey }) {
   // The success/error messages are now conditionally rendered below the button.
 
   return (
-    <SectionWrapper id="contact" className="bg-white" variant={variant}>
-      <div ref={revealRef} className="grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:pl-16">
+    <SectionWrapper id="contact" className="contact-section bg-white" variant={variant}>
+      <div ref={revealRef} className="contact-content grid w-full items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="pt-8">
           <div className="flex items-start justify-between gap-4">
             <div className="contact-reveal">
@@ -88,9 +91,9 @@ function Contact({ variant = 'section', isActive = true, revealKey }) {
               { label: 'GitHub', val: 'https://github.com/Sayonarakoto' },
               { label: 'Phone', val: '+91 9061394344' },
             ].map((link) => (
-              <div
+              <NeuCard
                 key={link.label}
-                className="contact-card ink-card flex items-start justify-between gap-4 rounded-2xl border-l-[3px] border-l-gray-200 px-4 py-4"
+                className="contact-card flex items-start justify-between gap-4 rounded-2xl border-l-[3px] border-l-gray-200 px-5 py-5"
               >
                 <span className="text-[10px] uppercase tracking-[0.18em] text-gray-500">
                   {link.label}
@@ -98,67 +101,34 @@ function Contact({ variant = 'section', isActive = true, revealKey }) {
                 <span className="text-right text-sm font-medium text-gray-900">
                   {link.val}
                 </span>
-              </div>
+              </NeuCard>
             ))}
           </div>
         </div>
 
         <div className="lg:mt-0">
-          <form
+          <NeuCard
+            as="form"
             onSubmit={handleSubmit}
-            className="contact-form ink-card-strong rounded-[1.5rem] p-8"
+            className="contact-form rounded-[1.5rem] p-10"
           >
             <h3 className="border-b border-gray-900 pb-4 font-heading text-3xl font-semibold text-gray-900">
               Message
             </h3>
 
             <div className="mt-6 space-y-5">
-              <label className="contact-field block text-[10px] uppercase tracking-[0.2em] text-gray-500">
-                Name
-                <input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="mt-2 w-full rounded-xl border border-gray-200 bg-white/95 px-4 py-3 text-sm text-gray-900 outline-none transition-colors focus:border-gray-900"
-                  placeholder="Your name"
-                />
-              </label>
-
-              <label className="contact-field block text-[10px] uppercase tracking-[0.2em] text-gray-500">
-                Email
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="mt-2 w-full rounded-xl border border-gray-200 bg-white/95 px-4 py-3 text-sm text-gray-900 outline-none transition-colors focus:border-gray-900"
-                  placeholder="you@example.com"
-                />
-              </label>
-
-              <label className="contact-field block text-[10px] uppercase tracking-[0.2em] text-gray-500">
-                Message
-                <textarea
-                  rows="4"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="mt-2 w-full resize-none rounded-xl border border-gray-200 bg-white/95 px-4 py-3 text-sm text-gray-900 outline-none transition-colors focus:border-gray-900"
-                  placeholder="Tell me about your project"
-                />
-              </label>
+              <NeuInput label="Name" className="contact-field" name="name" value={formData.name} onChange={handleChange} required placeholder="Your name" />
+              <NeuInput label="Email" className="contact-field" type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="you@example.com" />
+              <NeuInput label="Message" className="contact-field" as="textarea" rows="4" name="message" value={formData.message} onChange={handleChange} required placeholder="Tell me about your project" />
             </div>
 
-            <button
+            <NeuButton
               type="submit"
               disabled={status === 'sending'}
-              className="contact-button editorial-cta mt-8 w-full justify-center disabled:opacity-50"
+              className="contact-button mt-8 w-full justify-center px-5 py-3 text-[10px] uppercase tracking-[0.2em] disabled:opacity-50"
             >
               {status === 'sending' ? 'Sending...' : 'Send Message'}
-            </button>
+            </NeuButton>
 
             {status === 'success' && (
               <p className="mt-4 italic text-gray-900">
@@ -171,7 +141,7 @@ function Contact({ variant = 'section', isActive = true, revealKey }) {
                 Failed to send message{errorMessage ? `: ${errorMessage}` : ''}. Please try again.
               </p>
             )}
-          </form>
+          </NeuCard>
         </div>
       </div>
     </SectionWrapper>

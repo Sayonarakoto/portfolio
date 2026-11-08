@@ -36,7 +36,7 @@ export default function HorizontalTrack({ children }) {
   }, [])
 
   return (
-    <div ref={triggerRef} className="relative overflow-hidden">
+    <div ref={triggerRef} data-horizontal-track className="relative overflow-hidden">
       <div ref={trackRef} className="flex h-screen w-max">
         {children}
       </div>

@@ -1,123 +1,128 @@
-# A B Najeeb Rahman - Portfolio
+# A B Najeeb Rahman — Portfolio
 
-A modern, editorial-style personal portfolio built with React 19, Vite, and GSAP. This project showcases a clean, paper-textured aesthetic with subtle ink-reveal animations and a focus on professional detail.
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=20232A)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-animation-88CE02?logo=greensock&logoColor=111111)](https://gsap.com/)
+[![Netlify](https://img.shields.io/badge/Netlify-ready-00C7B7?logo=netlify&logoColor=white)](https://www.netlify.com/)
+[![Release notes](https://github.com/Sayonarakoto/FUTURE_FS_01/actions/workflows/release-notes.yml/badge.svg)](https://github.com/Sayonarakoto/FUTURE_FS_01/actions/workflows/release-notes.yml)
 
-## 🚀 Key Features
+An editorial-style developer portfolio built with React, Vite, Tailwind CSS, GSAP, and Lenis. It presents selected projects, a learning-focused experience timeline, an animated name video, and a Netlify-powered contact form.
 
-- **Editorial Design:** A "Digital Stationery" aesthetic using custom SVG noise textures and premium grid overlays.
-- **Fluid Motion:** 
-  - **GSAP:** Precise "Ink-Stroke" reveal animations for the hero section.
-  - **Framer Motion:** Smooth scroll-triggered entry animations for all sections.
-  - **Lenis:** Integrated smooth scrolling for a refined user experience.
-- **Custom Typography:** 
-  - Local `@font-face` integration for the unique `MyBrush` title font.
-  - Paired with Google Fonts (Shippori Mincho, Noto Sans JP).
-- **Responsive & Accessible:** Fully responsive layout with horizontal-first typography and motion-reduction support.
-- **Modern Stack:** Built on React 19 and Vite 8 for blazing-fast development and optimized production builds.
+## Highlights
 
-## 🛠️ Tech Stack
+- Responsive editorial layout with cream, crow-black, and lavender-violet visual language.
+- Horizontal desktop navigation with standard mobile scrolling.
+- Animated hero name video with accessible text fallback.
+- Reusable neumorphic UI components for cards, buttons, inputs, and sections.
+- About timeline with current SDE internship and previous learning experiences.
+- Contact form backed by a Netlify Function and Resend.
+- Automatic GitHub release notes covering commits and changed files from the previous two months.
 
-- **Framework:** React 19 (Vite)
-- **Styling:** Tailwind CSS 4, Vanilla CSS
-- **Animation:** GSAP, Framer Motion
-- **Icons:** Lucide React
-- **Smooth Scroll:** Lenis
+## Tech stack
 
-## 📦 Project Structure
+| Area | Tools |
+| --- | --- |
+| Framework | React 19, Vite 8 |
+| Styling | Tailwind CSS 4, CSS variables |
+| Motion | GSAP, Framer Motion, Lenis |
+| Icons | Lucide React |
+| Email | Netlify Functions, Resend |
+| Hosting | Netlify |
+
+## Project structure
 
 ```text
 src/
-├── assets/          # Static assets (Images, Fonts, PDF)
-│   └── fonts/       # Local MyBrush font files
-├── components/      # UI Components
-│   ├── sections/    # Page sections (Hero, About, Projects, Contact)
-│   ├── Navbar.jsx   # Interactive navigation
-│   └── ...
-├── constants/       # Configuration & Data (Navigation links)
-├── index.css        # Global styles & Tailwind configuration
-└── App.jsx          # Root application component
+├── assets/                  # CV, portrait, and hero name video
+├── components/
+│   ├── backgrounds/         # Decorative background primitives
+│   ├── sections/            # Hero, Projects, About, and Contact
+│   ├── ui/                  # Reusable neumorphic components
+│   ├── HorizontalTrack.jsx  # Desktop horizontal scrolling
+│   └── SectionWrapper.jsx   # Shared section layout
+├── constants/               # Navigation and project data
+├── hooks/                   # Motion and preference hooks
+├── App.jsx                  # Application shell
+└── index.css                # Design tokens and global styles
+netlify/functions/           # Serverless contact-email function
+.github/workflows/           # Automated release-note workflow
 ```
 
-## ⚙️ Setup & Installation
+## Requirements
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- npm or yarn
+- Node.js 20 or newer
+- npm 10 or newer
+- A Resend API key for the contact form
 
-### 1. Clone the repository
+## Local development
+
 ```bash
-git clone <your-repo-url>
-cd my-portfolio
-```
-
-### 2. Install dependencies
-```bash
+git clone https://github.com/Sayonarakoto/FUTURE_FS_01.git
+cd FUTURE_FS_01/my-portfolio
 npm install
-```
-
-### 3. Configure environment variables
-Create a `.env` file with:
-```bash
-RESEND_API_KEY=your_resend_api_key
-CONTACT_TO_EMAIL=naji03rahman@gmail.com
-```
-
-### 4. Start development server
-```bash
 npm run dev
 ```
-The application will be available at `http://localhost:5173`.
 
-## 🔧 Netlify Functions (Contact Email)
+Open `http://localhost:5173` in your browser.
 
-This project uses a Netlify Function at `netlify/functions/send-email.js` for the contact form.
-
-### 1. Required environment variables
-Set these in your local `.env` file and in Netlify Site Settings -> Environment Variables:
-
-```bash
-RESEND_API_KEY=your_resend_api_key
-CONTACT_TO_EMAIL=naji03rahman@gmail.com
-```
-
-### 2. Run functions locally
-Use Netlify CLI so `/.netlify/functions/send-email` works in local development:
+For the Netlify Function during local development, use the Netlify CLI:
 
 ```bash
 npx netlify dev
 ```
 
-### 3. Netlify build config
-This repo is already configured in `netlify.toml`:
+## Environment variables
+
+Create a `.env` file for local development, and add the same values in Netlify’s site environment settings:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+CONTACT_TO_EMAIL=your_email@example.com
+```
+
+Do not commit `.env` files or API keys.
+
+## Scripts
+
+```bash
+npm run dev      # Start the Vite development server
+npm run build    # Create the production build in dist/
+npm run preview  # Preview the production build locally
+npm run lint     # Run ESLint
+```
+
+## Netlify deployment
+
+The repository includes `netlify.toml` with these settings:
+
 - Build command: `npm run build`
 - Publish directory: `dist`
 - Functions directory: `netlify/functions`
+- Node.js version: 20
 
-## 🏗️ Deployment
+Connect the GitHub repository to Netlify, configure the environment variables, and deploy. Netlify will rebuild the site when changes are pushed to the connected branch.
 
-### Production Build
-To create an optimized production build:
-```bash
-npm run build
+### Netlify deploy-status badge
+
+Netlify provides a live deploy-status badge, so a custom Edge API is not required. In Netlify, open **Project configuration → Developer settings → Deploy status badge**, copy the generated Markdown, and replace the placeholder below with the site-specific URL:
+
+```md
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_NETLIFY_SITE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_NETLIFY_SITE_NAME/deploys)
 ```
-The output will be generated in the `dist/` directory.
 
-### Deploying to Vercel/Netlify
-1. Connect your repository to Vercel or Netlify.
-2. Set the **Build Command** to `npm run build`.
-3. Set the **Output Directory** to `dist`.
-4. For Netlify, add `RESEND_API_KEY` and `CONTACT_TO_EMAIL` in environment variables.
-5. Deploy!
+The badge can target a branch by appending `?branch=dev` to the image URL.
 
-### Deploying to GitHub Pages
-1. Install the `gh-pages` package: `npm install -D gh-pages`.
-2. Update `vite.config.js` with your repository base path: `base: '/your-repo-name/'`.
-3. Add deployment scripts to `package.json`:
-   ```json
-   "predeploy": "npm run build",
-   "deploy": "gh-pages -d dist"
-   ```
-4. Run `npm run deploy`.
+## Automated release notes
 
----
-Built by **A B Najeeb Rahman**
+`.github/workflows/release-notes.yml` runs on pushes to `main` and can also be started manually. It creates or updates a dated GitHub release and includes:
+
+- Commit subjects from the previous two months
+- A unique-file list for the same period
+- The current commit as the release target
+
+The workflow uses the built-in `GITHUB_TOKEN`; no additional secret is required. Existing Git history is preserved.
+
+## License
+
+This portfolio is personal work by **A B Najeeb Rahman**. Contact the author before reusing personal content, images, or documents.
