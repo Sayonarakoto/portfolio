@@ -58,8 +58,8 @@ netlify/functions/           # Serverless contact-email function
 ## Local development
 
 ```bash
-git clone https://github.com/Sayonarakoto/FUTURE_FS_01.git
-cd FUTURE_FS_01/my-portfolio
+git clone https://github.com/Sayonarakoto/portfolio.git
+cd portfolio/my-portfolio
 npm install
 npm run dev
 ```
@@ -120,9 +120,6 @@ The badge can target a branch by appending `?branch=dev` to the image URL.
 - Commit subjects from the previous two months
 - A unique-file list for the same period
 - The current commit as the release target
-
-The workflow uses the built-in `GITHUB_TOKEN`; no additional secret is required. Existing Git history is preserved.
-
 ## License
 
 This portfolio is personal work by **A B Najeeb Rahman**. Contact the author before reusing personal content, images, or documents.
