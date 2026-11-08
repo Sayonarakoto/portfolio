@@ -118,9 +118,9 @@ function About({ variant = 'section', isActive = true, revealKey }) {
 
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              { cat: 'Programming', list: 'C, JavaScript, Python' },
-              { cat: 'Web Stack', list: 'React, Vue, Express, Django, Node' },
-              { cat: 'Tools', list: 'Git, GitHub Projects, Docker' },
+              { cat: 'Programming', list: 'C, JavaScript, C++' },
+              { cat: 'Web Stack', list: 'React, Vue,Bootstrap, Express, .NET, Node' },
+              { cat: 'Tools', list: 'Git, GitHub Projects, Docker, Jira' },
               { cat: 'Strengths', list: 'Problem-Solving Under Pressure, UX Detail, Communication, Mental Flexibility' },
             ].map((item) => (
               <NeuCard key={item.cat} className="about-card rounded-2xl p-4">
