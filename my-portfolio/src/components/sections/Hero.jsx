@@ -83,22 +83,9 @@ function Hero({ variant = 'section', onNavigate, isActive = true, revealKey }) {
         <div className="grid grid-cols-12 items-center gap-12">
           <div className="col-span-12 lg:col-span-8">
             <div className="space-y-10">
-              <div className="hero-copy space-y-4">
-                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400">
-                  Talented Technocrat
-                </p>
-                <p className="max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
-                  Diploma graduate in Computer Engineering with a strong interest in software development.
-                  Currently a fresher, actively building coding skills with a focus on practical learning and
-                  problem-solving. Approaches programming as a continuous discovery process, with a mindset
-                  oriented toward experimentation, logic building, and iterative improvement. Familiar with
-                  core programming concepts and working toward applying them in real-world projects.
-                </p>
-              </div>
-
-              <div className="hero-namewrap relative z-10 select-none bg-transparent">
+              <div className="hero-namewrap relative z-10 mt-2 w-full max-w-[620px] overflow-hidden select-none bg-transparent sm:mt-4">
                 <video
-                  className="hero-name-video w-full max-w-[720px] mix-blend-multiply"
+                  className="hero-name-video block w-full max-w-[620px] mix-blend-multiply"
                   autoPlay
                   loop
                   muted
@@ -109,6 +96,18 @@ function Hero({ variant = 'section', onNavigate, isActive = true, revealKey }) {
                   <source src={nameAnimation} type="video/mp4" />
                 </video>
                 <span className="sr-only">A B Najeeb Rahman</span>
+              </div>
+
+              <div className="hero-copy relative z-20 space-y-4">
+                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400">
+                  Talented Technocrat
+                </p>
+                <p className="max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
+                  Currently building coding skills with a focus on practical learning and problem-solving.
+                  I approach programming as a continuous discovery process, with a mindset oriented toward
+                  experimentation, logic building, and iterative improvement. I am familiar with core
+                  programming concepts and working toward applying them in real-world projects.
+                </p>
               </div>
 
               <div className="hero-action flex flex-wrap gap-5">

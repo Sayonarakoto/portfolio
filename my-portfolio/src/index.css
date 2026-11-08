@@ -49,8 +49,10 @@ h4,
 
 .hero-name-video {
   aspect-ratio: 1546 / 720;
+  height: auto;
+  max-height: 220px;
   object-fit: contain;
-  object-position: center;
+  object-position: left center;
 }
 
 .horimiya-canvas {
