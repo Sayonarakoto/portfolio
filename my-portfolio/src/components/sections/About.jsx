@@ -6,6 +6,14 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const timelineItems = [
   {
+    title: 'SDE Intern',
+    period: 'Nov 2026 - Present',
+    org: 'Descpro Technologies Pvt. Ltd.',
+    category: 'Current Role',
+    featured: true,
+    description: 'Working on real-world software solutions, web applications, and engineering workflows at a Palakkad-based technology company focused on custom software development.',
+  },
+  {
     title: 'Diploma in Computer Engineering',
     period: '2023 - 2026',
     org: "St. Mary's Institute of Technology & Science",
@@ -169,9 +177,9 @@ function About({ variant = 'section', isActive = true, revealKey }) {
           >
             <div className="morph-line-h" />
             {timelineItems.map((item, idx) => (
-              <div key={`${item.title}-${item.period}`} className="about-timeline-item morph-item-h">
+                <div key={`${item.title}-${item.period}`} className={`about-timeline-item morph-item-h ${item.featured ? 'timeline-featured' : ''}`}>
                 <div className={`morph-dot-h transition-transform duration-300 ${idx === activeIndex ? 'scale-150 bg-gray-900' : 'bg-gray-400'}`} />
-                <div className={`morph-content rounded-xl h-full flex flex-col justify-between p-5 transition-all duration-300 ${idx === activeIndex ? 'border-gray-400 shadow-md' : ''}`}>
+                  <div className={`morph-content rounded-xl h-full flex flex-col justify-between p-5 transition-all duration-300 ${item.featured ? 'border-gray-900 bg-gray-50 shadow-lg' : ''} ${idx === activeIndex ? 'border-gray-400 shadow-md' : ''}`}>
                   <div>
                     <div className="mb-2 flex items-start justify-between gap-3">
                       <span className="text-[10px] uppercase tracking-[0.14em] text-gray-500">{item.period}</span>

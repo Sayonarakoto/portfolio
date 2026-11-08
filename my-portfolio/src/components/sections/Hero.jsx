@@ -75,11 +75,27 @@ function Hero({ variant = 'section', onNavigate, isActive = true, revealKey }) {
       }`}
     >
 
+      <div className="hero-video-layer pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <video
+          className="h-full w-full object-cover opacity-[0.12] mix-blend-multiply grayscale"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={linkedinPhoto}
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/55" />
+        <div className="absolute inset-0 bg-white/20" />
+      </div>
+
       <div className="absolute left-[5%] top-[15%] h-[1px] w-32 rotate-12 bg-[var(--paper-line)] opacity-40 mix-blend-multiply" />
       <div className="absolute bottom-[20%] right-[10%] h-1.5 w-1.5 rounded-full bg-gray-400 opacity-15 mix-blend-multiply" />
       <div className="absolute bottom-[10%] left-[40%] h-[1px] w-64 -rotate-6 bg-[var(--paper-line-soft)] opacity-30 mix-blend-multiply" />
 
-      <div className="mx-auto w-full max-w-7xl">
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="grid grid-cols-12 items-center gap-12">
           <div className="col-span-12 lg:col-span-8">
             <div className="space-y-10">

@@ -43,6 +43,15 @@ h4,
   font-family: 'Courier New', Courier, monospace;
 }
 
+.hero-video-layer {
+  z-index: 0;
+  isolation: isolate;
+}
+
+.hero-video-layer video {
+  filter: saturate(0.7) contrast(0.9);
+}
+
 .horimiya-canvas {
   position: relative;
   min-height: 100vh;
